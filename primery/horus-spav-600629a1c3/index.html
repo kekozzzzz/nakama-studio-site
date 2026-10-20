@@ -66,6 +66,31 @@ h2 { font-size: clamp(30px, 4.2vw, 60px); max-width: 18em; }
 .м-В .герой__фото--знак svg { width: 28%; }
 .герой__фото { aspect-ratio: 4 / 5; border-radius: 28px; overflow: hidden; background: var(--плита); }
 
+/* живые блоки из данных карточки */
+.связь { margin-top: 22px; display: flex; flex-wrap: wrap; gap: 10px; align-items: center; }
+.связь__метка { color: var(--текст-2); font-size: 15px; margin-right: 4px; }
+.чип { display: inline-flex; align-items: center; min-height: 40px; padding: 0 18px; border-radius: 999px; border: 1.5px solid var(--линия); background: var(--плита); color: var(--текст); font-size: 15px; font-weight: 500; text-decoration: none; transition: border-color .15s, transform .15s; }
+.чип:hover { border-color: var(--акцент); transform: translateY(-1px); }
+.открыто { margin-top: 18px; display: inline-flex; align-items: center; gap: 8px; font-size: 15px; color: var(--текст-2); }
+.открыто::before { content: ""; width: 9px; height: 9px; border-radius: 50%; background: #c7a52b; }
+.открыто--да::before { background: #2fa866; box-shadow: 0 0 0 4px rgba(47,168,102,.18); }
+.отзыв p, .цены__список span { overflow-wrap: anywhere; }
+.кнопка--мини { min-height: 44px; padding: 0 22px; font-size: 15px; }
+.контакты__карта .кнопка { margin-right: 8px; margin-bottom: 8px; }
+.контакты__карта .связь { margin-top: 12px; }
+.цены { background: var(--фон); }
+.цены__список { list-style: none; margin-top: 40px; max-width: 880px; border-top: 1px solid var(--линия); }
+.цены__список li { display: flex; justify-content: space-between; gap: 24px; align-items: baseline; padding: 20px 0; border-bottom: 1px solid var(--линия); font-size: clamp(17px, 1.5vw, 21px); }
+.цены__список b { font-family: var(--шрифт-заг); font-weight: 600; white-space: nowrap; color: var(--акцент); }
+.темы { background: var(--плита); }
+.темы__список { list-style: none; margin-top: 40px; display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 14px; }
+.темы__список li { background: var(--фон); border: 1px solid var(--линия); border-radius: 18px; padding: 22px 22px 20px; display: flex; flex-direction: column; gap: 8px; }
+.темы__список b { font-family: var(--шрифт-заг); font-size: clamp(19px, 1.6vw, 24px); font-weight: 600; }
+.темы__список span { color: var(--текст-2); font-size: 15px; }
+.м-В .связь__метка { color: rgba(255,255,255,.8); }
+.м-В .чип { background: rgba(255,255,255,.14); border-color: rgba(255,255,255,.5); color: #fff; }
+.м-В .открыто { color: rgba(255,255,255,.85); }
+.м-Б .связь, .м-Б .открыто { justify-content: center; }
 .услуги { background: var(--плита); }
 .без-фото-полосы { padding-bottom: 0; }
 .услуги ul { list-style: none; margin-top: 48px; display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 14px; }
@@ -189,12 +214,16 @@ h1, h2, .лого { overflow-wrap: anywhere; }
       <a class="кнопка" href="tel:+79514370205">Позвонить</a>
       <a class="кнопка кнопка--контур" href="#как">Как это проходит</a>
     </div>
+    <div class="связь"><span class="связь__метка">Написать:</span><a class="чип" href="https://t.me/+79514370205" target="_blank" rel="noopener">Telegram</a><a class="чип" href="https://wa.me/79514370205" target="_blank" rel="noopener">WhatsApp</a><a class="чип" href="undefined" target="_blank" rel="noopener">ВКонтакте</a></div>
+    <div class="открыто" id="открыто" hidden data-часы='{"mon":[["09:00","18:00"]],"tue":[["09:00","18:00"]],"wed":[["09:00","18:00"]],"thu":[["09:00","18:00"]],"fri":[["09:00","18:00"]],"sat":[],"sun":[]}'></div>
     <div class="герой__рейтинг"><strong>4,9</strong><span>оценка клиентов на картах, 30 отзывов</span></div>
   </div>
   <div class="герой__фото герой__фото--знак"><svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M32 8v44M20 52h24M12 18h40"/><path d="M12 18l-8 18a8 8 0 0 0 16 0l-8-18zM52 18l-8 18a8 8 0 0 0 16 0l-8-18z"/><circle cx="32" cy="10" r="2.4"/></svg></div>
 </section>
 
 <section class="услуги"><div class="блок полоса"><span class="метка">Направления</span><h2>Чем занимаются</h2><ul><li data-n="01">Юридические услуги</li><li data-n="02">Ведение дел в судах</li></ul></div></section>
+
+<section class="цены"><div class="блок полоса"><span class="метка">Цены</span><h2>Услуги и стоимость</h2><ul class="цены__список"><li><span>Юридическая консультация</span><b>2&nbsp;000&nbsp;₽</b></li><li><span>Составление документов</span><b>4&nbsp;000&nbsp;₽</b></li><li><span>Сопровождение Исполнительного производства</span><b>10&nbsp;000&nbsp;₽</b></li></ul><p class="подпись-полосы">Цены из карточки на картах. Точную стоимость уточняйте по телефону.</p></div></section>
 
 <section class="блок полоса" id="как">
   <span class="метка">Как это проходит</span>
@@ -208,6 +237,8 @@ h1, h2, .лого { overflow-wrap: anywhere; }
 </section>
 
 
+
+<section class="темы"><div class="блок полоса"><span class="метка">Что отмечают клиенты</span><h2>За что хвалят в отзывах</h2><ul class="темы__список"><li><b>знают своё дело</b><span>в 12 из 28 отзывов</span></li><li><b>качество работы</b><span>в 11 из 28 отзывов</span></li><li><b>вежливое общение</b><span>в 5 из 28 отзывов</span></li><li><b>решают вопрос</b><span>в 4 из 28 отзывов</span></li></ul><p class="подпись-полосы">Подсчёт по отзывам с карточки на картах.</p></div></section>
 
 <section class="отзывы"><div class="блок полоса"><span class="метка">Отзывы клиентов</span><h2>Что пишут те, кто уже обращался</h2><div class="отзывы__сетка"><blockquote class="отзыв"><span class="звёзды">★★★★★</span><p>«Все четко,быстро,оперативно,коммуникабельные сотрудники,нет не решаемых вопросов»</p><small>июль 2023 г., 2ГИС</small></blockquote><blockquote class="отзыв"><span class="звёзды">★★★★★</span><p>«Грамотные юристы всегда проконсультируют по любому вопросу. Всегда приветливые и дружелюбные, приятно работать. Доверяю компании &quot;Хорус&quot; любое дело.»</p><small>август 2021 г., 2ГИС</small></blockquote><blockquote class="отзыв"><span class="звёзды">★★★★★</span><p>«Профессионалы высшей категории! Решат любые вопросы во всех сферах гражданского права. Глубоко порядочные люди, опытные специалисты.»</p><small>декабрь 2020 г., 2ГИС</small></blockquote><blockquote class="отзыв"><span class="звёзды">★★★★★</span><p>«Сотрудничаю с компанией ХОРУС много лет. Все поставленные задачи решались на отлично.»</p><small>ноябрь 2020 г., 2ГИС</small></blockquote></div></div></section>
 
@@ -226,10 +257,20 @@ h1, h2, .лого { overflow-wrap: anywhere; }
       <h3>Опишите ситуацию</h3>
       <p>Позвоните и кратко расскажите, что случилось. Ответ ни к чему не обязывает.</p>
       <a class="кнопка" href="tel:+79514370205">Позвонить</a>
+      <a class="кнопка кнопка--контур кнопка--мини" href="https://yandex.ru/maps/?pt=58.968571,53.406985&z=17&l=map" target="_blank" rel="noopener">Как добраться</a>
+      <div class="связь"><span class="связь__метка">Написать:</span><a class="чип" href="https://t.me/+79514370205" target="_blank" rel="noopener">Telegram</a><a class="чип" href="https://wa.me/79514370205" target="_blank" rel="noopener">WhatsApp</a><a class="чип" href="undefined" target="_blank" rel="noopener">ВКонтакте</a></div>
     </div>
   </div>
 </section>
 
 <footer class="подвал"><div class="полоса"><span>Хорус, Магнитогорск</span><span>Пример сайта. Не является публичной офертой.</span></div></footer>
+<script>(function(){var e=document.getElementById('открыто');if(!e)return;var h=JSON.parse(e.getAttribute('data-часы'));var D=['sun','mon','tue','wed','thu','fri','sat'];
+var p=new Intl.DateTimeFormat('en-GB',{timeZone:'Asia/Yekaterinburg',weekday:'short',hour:'2-digit',minute:'2-digit',hour12:false}).formatToParts(new Date());var o={};p.forEach(function(x){o[x.type]=x.value});
+var di={sun:0,mon:1,tue:2,wed:3,thu:4,fri:5,sat:6}[String(o.weekday).slice(0,3).toLowerCase()];var now=parseInt(o.hour,10)%24*60+parseInt(o.minute,10);
+function m(s){var a=s.split(':');return a[0]*60+(+a[1])}
+var t=h[D[di]]||[];
+for(var i=0;i<t.length;i++){var a=m(t[i][0]),b=m(t[i][1]);if(b<=a)b+=1440;if(now>=a&&now<b){e.textContent=(a===0&&b>=1439)?'Сейчас открыто, круглосуточно':'Сейчас открыто, до '+t[i][1];e.className='открыто открыто--да';e.hidden=false;return}}
+for(var k=0;k<8;k++){var r=h[D[(di+k)%7]]||[];for(var j=0;j<r.length;j++){if(k>0||m(r[j][0])>now){e.textContent='Сейчас закрыто, откроется '+(k===0?'сегодня':k===1?'завтра':'позже')+' в '+r[j][0];e.hidden=false;return}}}
+})();</script>
 </body>
 </html>

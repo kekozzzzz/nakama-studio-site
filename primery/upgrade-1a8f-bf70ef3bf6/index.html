@@ -60,9 +60,39 @@ h2 { font-size: clamp(30px, 4.2vw, 60px); max-width: 18em; }
 .герой__рейтинг { margin-top: 36px; display: flex; gap: 14px; align-items: baseline; flex-wrap: wrap; }
 .герой__рейтинг strong { font-family: var(--шрифт-заг); font-size: 44px; line-height: 1; }
 .герой__рейтинг span { color: var(--текст-2); }
+.герой__фото--знак { display: grid; place-items: center; background: linear-gradient(145deg, var(--тьма), color-mix(in srgb, var(--тьма) 55%, var(--акцент))); color: var(--на-тьме); }
+.герой__фото--знак svg { width: 42%; height: auto; opacity: .92; }
+.м-В .герой__фото--знак { justify-items: end; padding-right: 8%; }
+.м-В .герой__фото--знак svg { width: 28%; }
 .герой__фото { aspect-ratio: 4 / 5; border-radius: 28px; overflow: hidden; background: var(--плита); }
 
+/* живые блоки из данных карточки */
+.связь { margin-top: 22px; display: flex; flex-wrap: wrap; gap: 10px; align-items: center; }
+.связь__метка { color: var(--текст-2); font-size: 15px; margin-right: 4px; }
+.чип { display: inline-flex; align-items: center; min-height: 40px; padding: 0 18px; border-radius: 999px; border: 1.5px solid var(--линия); background: var(--плита); color: var(--текст); font-size: 15px; font-weight: 500; text-decoration: none; transition: border-color .15s, transform .15s; }
+.чип:hover { border-color: var(--акцент); transform: translateY(-1px); }
+.открыто { margin-top: 18px; display: inline-flex; align-items: center; gap: 8px; font-size: 15px; color: var(--текст-2); }
+.открыто::before { content: ""; width: 9px; height: 9px; border-radius: 50%; background: #c7a52b; }
+.открыто--да::before { background: #2fa866; box-shadow: 0 0 0 4px rgba(47,168,102,.18); }
+.отзыв p, .цены__список span { overflow-wrap: anywhere; }
+.кнопка--мини { min-height: 44px; padding: 0 22px; font-size: 15px; }
+.контакты__карта .кнопка { margin-right: 8px; margin-bottom: 8px; }
+.контакты__карта .связь { margin-top: 12px; }
+.цены { background: var(--фон); }
+.цены__список { list-style: none; margin-top: 40px; max-width: 880px; border-top: 1px solid var(--линия); }
+.цены__список li { display: flex; justify-content: space-between; gap: 24px; align-items: baseline; padding: 20px 0; border-bottom: 1px solid var(--линия); font-size: clamp(17px, 1.5vw, 21px); }
+.цены__список b { font-family: var(--шрифт-заг); font-weight: 600; white-space: nowrap; color: var(--акцент); }
+.темы { background: var(--плита); }
+.темы__список { list-style: none; margin-top: 40px; display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 14px; }
+.темы__список li { background: var(--фон); border: 1px solid var(--линия); border-radius: 18px; padding: 22px 22px 20px; display: flex; flex-direction: column; gap: 8px; }
+.темы__список b { font-family: var(--шрифт-заг); font-size: clamp(19px, 1.6vw, 24px); font-weight: 600; }
+.темы__список span { color: var(--текст-2); font-size: 15px; }
+.м-В .связь__метка { color: rgba(255,255,255,.8); }
+.м-В .чип { background: rgba(255,255,255,.14); border-color: rgba(255,255,255,.5); color: #fff; }
+.м-В .открыто { color: rgba(255,255,255,.85); }
+.м-Б .связь, .м-Б .открыто { justify-content: center; }
 .услуги { background: var(--плита); }
+.без-фото-полосы { padding-bottom: 0; }
 .услуги ul { list-style: none; margin-top: 48px; display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 14px; }
 .услуги li { background: var(--фон); border: 1px solid var(--линия); border-radius: 18px; padding: 26px 24px; font-family: var(--шрифт-заг); font-size: clamp(18px, 1.5vw, 22px); font-weight: 500; line-height: 1.25; min-height: 128px; padding-top: 46px; display: flex; align-items: flex-end; position: relative; }
 .услуги li::before { content: attr(data-n); position: absolute; top: 18px; left: 24px; font-family: var(--шрифт); font-size: 13px; color: var(--акцент); font-weight: 600; letter-spacing: .06em; }
@@ -169,7 +199,7 @@ h1, h2, .лого { overflow-wrap: anywhere; }
 </style>
 </head>
 <body class="м-В ш-обычный">
-<div class="пример"><b>Пример страницы для «Upgrade».</b> Данные из открытых карточек, тексты примерные - доработаем под вас.</div>
+<div class="пример"><b>Пример сайта для «Upgrade».</b> Данные из открытых карточек, тексты примерные - доработаем под вас.</div>
 
 <header class="шапка полоса">
   <span class="лого">Upgrade</span>
@@ -184,12 +214,16 @@ h1, h2, .лого { overflow-wrap: anywhere; }
       <a class="кнопка" href="tel:+79514775291">Позвонить</a>
       <a class="кнопка кнопка--контур" href="#как">Как это проходит</a>
     </div>
+    <div class="связь"><span class="связь__метка">Написать:</span><a class="чип" href="https://t.me/upgrade_service174" target="_blank" rel="noopener">Telegram</a><a class="чип" href="https://wa.me/79514775291" target="_blank" rel="noopener">WhatsApp</a><a class="чип" href="undefined" target="_blank" rel="noopener">ВКонтакте</a></div>
+    <div class="открыто" id="открыто" hidden data-часы='{"mon":[["10:00","21:00"]],"tue":[["10:00","21:00"]],"wed":[["10:00","21:00"]],"thu":[["10:00","21:00"]],"fri":[["10:00","21:00"]],"sat":[["10:00","21:00"]],"sun":[["10:00","21:00"]]}'></div>
     <div class="герой__рейтинг"><strong>5,0</strong><span>оценка клиентов на картах, 30 отзывов</span></div>
   </div>
   <div class="герой__фото"><img src="foto/rabota-nad-platoy.webp" alt=""></div>
 </section>
 
 <section class="услуги"><div class="блок полоса"><span class="метка">Что чинят</span><h2>С чем сюда обращаются</h2><ul><li data-n="01">Ремонт цифровой техники</li><li data-n="02">Ремонт телефонов</li></ul></div></section>
+
+<section class="цены"><div class="блок полоса"><span class="метка">Цены</span><h2>Услуги и стоимость</h2><ul class="цены__список"><li><span>Замена стекла/матрицы/дисплея</span><b>690&nbsp;₽</b></li><li><span>Замена задней крышки</span><b>490&nbsp;₽</b></li><li><span>Замена корпуса</span><b>490&nbsp;₽</b></li><li><span>Замена кнопки включения</span><b>490&nbsp;₽</b></li><li><span>Замена кнопок громкости</span><b>490&nbsp;₽</b></li><li><span>Замена антенны</span><b>490&nbsp;₽</b></li></ul><p class="подпись-полосы">Цены из карточки на картах. Точную стоимость уточняйте по телефону.</p></div></section>
 
 <section class="блок полоса" id="как">
   <span class="метка">Как это проходит</span>
@@ -211,6 +245,8 @@ h1, h2, .лого { overflow-wrap: anywhere; }
   
 </section>
 
+<section class="темы"><div class="блок полоса"><span class="метка">Что отмечают клиенты</span><h2>За что хвалят в отзывах</h2><ul class="темы__список"><li><b>быстро и вовремя</b><span>в 16 из 28 отзывов</span></li><li><b>качество работы</b><span>в 15 из 28 отзывов</span></li><li><b>решают вопрос</b><span>в 4 из 28 отзывов</span></li><li><b>цена и честность</b><span>в 3 из 28 отзывов</span></li></ul><p class="подпись-полосы">Подсчёт по отзывам с карточки на картах.</p></div></section>
+
 <section class="отзывы"><div class="блок полоса"><span class="метка">Отзывы клиентов</span><h2>Что пишут те, кто уже обращался</h2><div class="отзывы__сетка"><blockquote class="отзыв"><span class="звёзды">★★★★★</span><p>«Очень приятный сотрудник, грамотный специалист. Отремонтировал телефон в кратчайшие сроки.»</p><small>июль 2026 г., 2ГИС</small></blockquote><blockquote class="отзыв"><span class="звёзды">★★★★★</span><p>«Заменили стекло на телефоне быстро и качественно. Доволен результатом, рекомендую!»</p><small>сентябрь 2026 г., 2ГИС</small></blockquote><blockquote class="отзыв"><span class="звёзды">★★★★★</span><p>«Чисто случайно обратились с ремонтом телефона и очень были приятно удивлены знанием и умением своего дела, качество и обслуживание на высоте, настоятельно всем рекомендую»</p><small>август 2026 г., 2ГИС</small></blockquote><blockquote class="отзыв"><span class="звёзды">★★★★★</span><p>«Все отлично, спасибо большое за новый телефон и отличный сервис! Очень отзывчивые и добрые ребята. 
 Стекло наклеили в подарок. Рекомендуем!»</p><small>август 2026 г., 2ГИС</small></blockquote></div></div></section>
 
@@ -229,10 +265,20 @@ h1, h2, .лого { overflow-wrap: anywhere; }
       <h3>Опишите поломку</h3>
       <p>Позвоните и расскажите, что с вещью. Ответ ни к чему не обязывает.</p>
       <a class="кнопка" href="tel:+79514775291">Позвонить</a>
+      <a class="кнопка кнопка--контур кнопка--мини" href="https://yandex.ru/maps/?pt=58.981925,53.378805&z=17&l=map" target="_blank" rel="noopener">Как добраться</a>
+      <div class="связь"><span class="связь__метка">Написать:</span><a class="чип" href="https://t.me/upgrade_service174" target="_blank" rel="noopener">Telegram</a><a class="чип" href="https://wa.me/79514775291" target="_blank" rel="noopener">WhatsApp</a><a class="чип" href="undefined" target="_blank" rel="noopener">ВКонтакте</a></div>
     </div>
   </div>
 </section>
 
-<footer class="подвал"><div class="полоса"><span>Upgrade, Магнитогорск</span><span>Пример страницы. Не является публичной офертой.</span></div></footer>
+<footer class="подвал"><div class="полоса"><span>Upgrade, Магнитогорск</span><span>Пример сайта. Не является публичной офертой.</span></div></footer>
+<script>(function(){var e=document.getElementById('открыто');if(!e)return;var h=JSON.parse(e.getAttribute('data-часы'));var D=['sun','mon','tue','wed','thu','fri','sat'];
+var p=new Intl.DateTimeFormat('en-GB',{timeZone:'Asia/Yekaterinburg',weekday:'short',hour:'2-digit',minute:'2-digit',hour12:false}).formatToParts(new Date());var o={};p.forEach(function(x){o[x.type]=x.value});
+var di={sun:0,mon:1,tue:2,wed:3,thu:4,fri:5,sat:6}[String(o.weekday).slice(0,3).toLowerCase()];var now=parseInt(o.hour,10)%24*60+parseInt(o.minute,10);
+function m(s){var a=s.split(':');return a[0]*60+(+a[1])}
+var t=h[D[di]]||[];
+for(var i=0;i<t.length;i++){var a=m(t[i][0]),b=m(t[i][1]);if(b<=a)b+=1440;if(now>=a&&now<b){e.textContent=(a===0&&b>=1439)?'Сейчас открыто, круглосуточно':'Сейчас открыто, до '+t[i][1];e.className='открыто открыто--да';e.hidden=false;return}}
+for(var k=0;k<8;k++){var r=h[D[(di+k)%7]]||[];for(var j=0;j<r.length;j++){if(k>0||m(r[j][0])>now){e.textContent='Сейчас закрыто, откроется '+(k===0?'сегодня':k===1?'завтра':'позже')+' в '+r[j][0];e.hidden=false;return}}}
+})();</script>
 </body>
 </html>

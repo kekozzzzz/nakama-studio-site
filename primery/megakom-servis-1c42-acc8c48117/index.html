@@ -8,16 +8,16 @@
 <link rel="stylesheet" href="../../fonts/fonts.css">
 <style>
 :root {
-  --фон: #fbf4ec;
-  --плита: #f1e3d3;
-  --текст: #2a1710;
-  --текст-2: #6d4f43;
-  --акцент: #b3361f;
-  --на-акценте: #ffffff;
-  --тьма: #2a1710;
-  --на-тьме: #fbf1e6;
-  --линия: rgba(42,23,16,.16);
-  --шрифт-заг: 'Unbounded', sans-serif;
+  --фон: #0f1f17;
+  --плита: #17301f;
+  --текст: #eef6ef;
+  --текст-2: #a9c0ae;
+  --акцент: #8fe388;
+  --на-акценте: #0f1f17;
+  --тьма: #08140d;
+  --на-тьме: #e8f3ea;
+  --линия: rgba(238,246,239,.16);
+  --шрифт-заг: 'Onest', sans-serif;
   --шрифт: 'Onest', sans-serif;
   --край: clamp(18px, 4vw, 64px);
   --воздух: clamp(56px, 8vw, 112px);
@@ -60,9 +60,39 @@ h2 { font-size: clamp(30px, 4.2vw, 60px); max-width: 18em; }
 .герой__рейтинг { margin-top: 36px; display: flex; gap: 14px; align-items: baseline; flex-wrap: wrap; }
 .герой__рейтинг strong { font-family: var(--шрифт-заг); font-size: 44px; line-height: 1; }
 .герой__рейтинг span { color: var(--текст-2); }
+.герой__фото--знак { display: grid; place-items: center; background: linear-gradient(145deg, var(--тьма), color-mix(in srgb, var(--тьма) 55%, var(--акцент))); color: var(--на-тьме); }
+.герой__фото--знак svg { width: 42%; height: auto; opacity: .92; }
+.м-В .герой__фото--знак { justify-items: end; padding-right: 8%; }
+.м-В .герой__фото--знак svg { width: 28%; }
 .герой__фото { aspect-ratio: 4 / 5; border-radius: 28px; overflow: hidden; background: var(--плита); }
 
+/* живые блоки из данных карточки */
+.связь { margin-top: 22px; display: flex; flex-wrap: wrap; gap: 10px; align-items: center; }
+.связь__метка { color: var(--текст-2); font-size: 15px; margin-right: 4px; }
+.чип { display: inline-flex; align-items: center; min-height: 40px; padding: 0 18px; border-radius: 999px; border: 1.5px solid var(--линия); background: var(--плита); color: var(--текст); font-size: 15px; font-weight: 500; text-decoration: none; transition: border-color .15s, transform .15s; }
+.чип:hover { border-color: var(--акцент); transform: translateY(-1px); }
+.открыто { margin-top: 18px; display: inline-flex; align-items: center; gap: 8px; font-size: 15px; color: var(--текст-2); }
+.открыто::before { content: ""; width: 9px; height: 9px; border-radius: 50%; background: #c7a52b; }
+.открыто--да::before { background: #2fa866; box-shadow: 0 0 0 4px rgba(47,168,102,.18); }
+.отзыв p, .цены__список span { overflow-wrap: anywhere; }
+.кнопка--мини { min-height: 44px; padding: 0 22px; font-size: 15px; }
+.контакты__карта .кнопка { margin-right: 8px; margin-bottom: 8px; }
+.контакты__карта .связь { margin-top: 12px; }
+.цены { background: var(--фон); }
+.цены__список { list-style: none; margin-top: 40px; max-width: 880px; border-top: 1px solid var(--линия); }
+.цены__список li { display: flex; justify-content: space-between; gap: 24px; align-items: baseline; padding: 20px 0; border-bottom: 1px solid var(--линия); font-size: clamp(17px, 1.5vw, 21px); }
+.цены__список b { font-family: var(--шрифт-заг); font-weight: 600; white-space: nowrap; color: var(--акцент); }
+.темы { background: var(--плита); }
+.темы__список { list-style: none; margin-top: 40px; display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 14px; }
+.темы__список li { background: var(--фон); border: 1px solid var(--линия); border-radius: 18px; padding: 22px 22px 20px; display: flex; flex-direction: column; gap: 8px; }
+.темы__список b { font-family: var(--шрифт-заг); font-size: clamp(19px, 1.6vw, 24px); font-weight: 600; }
+.темы__список span { color: var(--текст-2); font-size: 15px; }
+.м-В .связь__метка { color: rgba(255,255,255,.8); }
+.м-В .чип { background: rgba(255,255,255,.14); border-color: rgba(255,255,255,.5); color: #fff; }
+.м-В .открыто { color: rgba(255,255,255,.85); }
+.м-Б .связь, .м-Б .открыто { justify-content: center; }
 .услуги { background: var(--плита); }
+.без-фото-полосы { padding-bottom: 0; }
 .услуги ul { list-style: none; margin-top: 48px; display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 14px; }
 .услуги li { background: var(--фон); border: 1px solid var(--линия); border-radius: 18px; padding: 26px 24px; font-family: var(--шрифт-заг); font-size: clamp(18px, 1.5vw, 22px); font-weight: 500; line-height: 1.25; min-height: 128px; padding-top: 46px; display: flex; align-items: flex-end; position: relative; }
 .услуги li::before { content: attr(data-n); position: absolute; top: 18px; left: 24px; font-family: var(--шрифт); font-size: 13px; color: var(--акцент); font-weight: 600; letter-spacing: .06em; }
@@ -168,8 +198,8 @@ h1, h2, .лого { overflow-wrap: anywhere; }
 }
 </style>
 </head>
-<body class="м-Б ш-широкий ш-длинное-слово">
-<div class="пример"><b>Пример страницы для «МегаКом Сервис».</b> Данные из открытых карточек, тексты примерные - доработаем под вас.</div>
+<body class="м-В ш-обычный ш-длинное-слово">
+<div class="пример"><b>Пример сайта для «МегаКом Сервис».</b> Данные из открытых карточек, тексты примерные - доработаем под вас.</div>
 
 <header class="шапка полоса">
   <span class="лого">МегаКом Сервис</span>
@@ -184,12 +214,16 @@ h1, h2, .лого { overflow-wrap: anywhere; }
       <a class="кнопка" href="tel:+79080642134">Позвонить</a>
       <a class="кнопка кнопка--контур" href="#как">Как это проходит</a>
     </div>
+    <div class="связь"><span class="связь__метка">Написать:</span><a class="чип" href="https://t.me/+79080642134" target="_blank" rel="noopener">Telegram</a><a class="чип" href="https://wa.me/79080642134" target="_blank" rel="noopener">WhatsApp</a><a class="чип" href="undefined" target="_blank" rel="noopener">ВКонтакте</a></div>
+    <div class="открыто" id="открыто" hidden data-часы='{"mon":[["10:00","19:00"]],"tue":[["10:00","19:00"]],"wed":[["10:00","19:00"]],"thu":[["10:00","19:00"]],"fri":[["10:00","19:00"]],"sat":[["10:00","19:00"]],"sun":[["10:00","19:00"]]}'></div>
     <div class="герой__рейтинг"><strong>4,4</strong><span>оценка клиентов на картах, 6 отзывов</span></div>
   </div>
-  <div class="герой__фото"><img src="foto/plata-krupno.webp" alt=""></div>
+  <div class="герой__фото"><img src="foto/rabota-nad-platoy.webp" alt=""></div>
 </section>
 
 <section class="услуги"><div class="блок полоса"><span class="метка">Что чинят</span><h2>С чем сюда обращаются</h2><ul><li data-n="01">Ремонт и установка бытовой техники</li><li data-n="02">Бытовая техника</li><li data-n="03">Комиссионные магазины</li><li data-n="04">Запчасти для бытовой техники</li></ul></div></section>
+
+
 
 <section class="блок полоса" id="как">
   <span class="метка">Как это проходит</span>
@@ -206,10 +240,12 @@ h1, h2, .лого { overflow-wrap: anywhere; }
   <div class="фото-полоса">
     <div><img src="foto/svoe-1.webp" alt=""></div>
     <div><img src="foto/svoe-2.webp" alt=""></div>
-    <div><img src="foto/plata-chip.webp" alt=""></div>
+    <div><img src="foto/mikrovolnovka-serebro.webp" alt=""></div>
   </div>
   <p class="подпись-полосы">Часть фото с карточки «МегаКом Сервис» на картах</p>
 </section>
+
+
 
 
 
@@ -228,10 +264,20 @@ h1, h2, .лого { overflow-wrap: anywhere; }
       <h3>Опишите поломку</h3>
       <p>Позвоните и расскажите, что с вещью. Ответ ни к чему не обязывает.</p>
       <a class="кнопка" href="tel:+79080642134">Позвонить</a>
+      <a class="кнопка кнопка--контур кнопка--мини" href="https://yandex.ru/maps/?pt=58.98118,53.361084&z=17&l=map" target="_blank" rel="noopener">Как добраться</a>
+      <div class="связь"><span class="связь__метка">Написать:</span><a class="чип" href="https://t.me/+79080642134" target="_blank" rel="noopener">Telegram</a><a class="чип" href="https://wa.me/79080642134" target="_blank" rel="noopener">WhatsApp</a><a class="чип" href="undefined" target="_blank" rel="noopener">ВКонтакте</a></div>
     </div>
   </div>
 </section>
 
-<footer class="подвал"><div class="полоса"><span>МегаКом Сервис, Магнитогорск</span><span>Пример страницы. Не является публичной офертой.</span></div></footer>
+<footer class="подвал"><div class="полоса"><span>МегаКом Сервис, Магнитогорск</span><span>Пример сайта. Не является публичной офертой.</span></div></footer>
+<script>(function(){var e=document.getElementById('открыто');if(!e)return;var h=JSON.parse(e.getAttribute('data-часы'));var D=['sun','mon','tue','wed','thu','fri','sat'];
+var p=new Intl.DateTimeFormat('en-GB',{timeZone:'Asia/Yekaterinburg',weekday:'short',hour:'2-digit',minute:'2-digit',hour12:false}).formatToParts(new Date());var o={};p.forEach(function(x){o[x.type]=x.value});
+var di={sun:0,mon:1,tue:2,wed:3,thu:4,fri:5,sat:6}[String(o.weekday).slice(0,3).toLowerCase()];var now=parseInt(o.hour,10)%24*60+parseInt(o.minute,10);
+function m(s){var a=s.split(':');return a[0]*60+(+a[1])}
+var t=h[D[di]]||[];
+for(var i=0;i<t.length;i++){var a=m(t[i][0]),b=m(t[i][1]);if(b<=a)b+=1440;if(now>=a&&now<b){e.textContent=(a===0&&b>=1439)?'Сейчас открыто, круглосуточно':'Сейчас открыто, до '+t[i][1];e.className='открыто открыто--да';e.hidden=false;return}}
+for(var k=0;k<8;k++){var r=h[D[(di+k)%7]]||[];for(var j=0;j<r.length;j++){if(k>0||m(r[j][0])>now){e.textContent='Сейчас закрыто, откроется '+(k===0?'сегодня':k===1?'завтра':'позже')+' в '+r[j][0];e.hidden=false;return}}}
+})();</script>
 </body>
 </html>
