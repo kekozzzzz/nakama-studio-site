@@ -8,16 +8,16 @@
 <link rel="stylesheet" href="../../fonts/fonts.css">
 <style>
 :root {
-  --фон: #eff6f6;
-  --плита: #dcebeb;
-  --текст: #122a2d;
-  --текст-2: #4a6568;
-  --акцент: #0f8b8d;
+  --фон: #f2f4f8;
+  --плита: #e3e8f1;
+  --текст: #14213d;
+  --текст-2: #4a5670;
+  --акцент: #2f4bd8;
   --на-акценте: #ffffff;
-  --тьма: #0c2326;
-  --на-тьме: #e9f5f5;
-  --линия: rgba(18,42,45,.16);
-  --шрифт-заг: 'Unbounded', sans-serif;
+  --тьма: #0f1a38;
+  --на-тьме: #eef1fa;
+  --линия: rgba(20,33,61,.15);
+  --шрифт-заг: 'Onest', sans-serif;
   --шрифт: 'Onest', sans-serif;
   --край: clamp(18px, 4vw, 64px);
   --воздух: clamp(56px, 8vw, 112px);
@@ -51,15 +51,52 @@ h2 { font-size: clamp(30px, 4.2vw, 60px); max-width: 18em; }
 .ш-широкий .герой h1 { font-size: clamp(26px, 3.5vw, 52px); }  /* Unbounded очень широкий: иначе длинные названия не умещаются */
 .м-В .герой > div:first-child { max-width: 46em; }
 .м-В .герой h1 { font-size: clamp(30px, 4.2vw, 62px); }
+.ш-широкий.ш-длинное-слово .герой h1, .ш-широкий.ш-длинное-слово.м-В .герой h1 { font-size: clamp(20px, 2.2vw, 31px); }
+.ш-длинное-слово .герой h1 { font-size: clamp(22px, 2.8vw, 42px); }
+.ш-длинное-слово.м-В .герой h1 { font-size: clamp(22px, 2.6vw, 40px); }
 .ш-широкий.м-В .герой h1 { font-size: clamp(26px, 3.3vw, 50px); }
 .герой__лид { margin-top: 24px; font-size: clamp(17px, 1.5vw, 22px); color: var(--текст-2); max-width: 32em; }
 .герой__дело { margin-top: 36px; display: flex; flex-wrap: wrap; gap: 14px; align-items: center; }
 .герой__рейтинг { margin-top: 36px; display: flex; gap: 14px; align-items: baseline; flex-wrap: wrap; }
 .герой__рейтинг strong { font-family: var(--шрифт-заг); font-size: 44px; line-height: 1; }
 .герой__рейтинг span { color: var(--текст-2); }
+.герой__фото--знак { display: grid; place-items: center; background: linear-gradient(145deg, var(--тьма), color-mix(in srgb, var(--тьма) 55%, var(--акцент))); color: var(--на-тьме); }
+.герой__фото--знак svg { width: 42%; height: auto; opacity: .92; }
+.м-В .герой__фото--знак { justify-items: end; padding-right: 8%; }
+.м-В .герой__фото--знак svg { width: 28%; }
 .герой__фото { aspect-ratio: 4 / 5; border-radius: 28px; overflow: hidden; background: var(--плита); }
 
+/* живые блоки из данных карточки */
+.связь { margin-top: 22px; display: flex; flex-wrap: wrap; gap: 10px; align-items: center; }
+.связь__метка { color: var(--текст-2); font-size: 15px; margin-right: 4px; }
+.чип { display: inline-flex; align-items: center; min-height: 40px; padding: 0 18px; border-radius: 999px; border: 1.5px solid var(--линия); background: var(--плита); color: var(--текст); font-size: 15px; font-weight: 500; text-decoration: none; transition: border-color .15s, transform .15s; }
+.чип:hover { border-color: var(--акцент); transform: translateY(-1px); }
+.открыто { margin-top: 18px; display: inline-flex; align-items: center; gap: 8px; font-size: 15px; color: var(--текст-2); }
+.открыто::before { content: ""; width: 9px; height: 9px; border-radius: 50%; background: #c7a52b; }
+.открыто--да::before { background: #2fa866; box-shadow: 0 0 0 4px rgba(47,168,102,.18); }
+.отзыв p, .цены__список span { overflow-wrap: anywhere; }
+.кнопка--мини { min-height: 44px; padding: 0 22px; font-size: 15px; }
+.контакты__карта .кнопка { margin-right: 8px; margin-bottom: 8px; }
+.контакты__карта .связь { margin-top: 12px; }
+.м-Б .контакты__карта .связь__метка { color: var(--на-тьме); opacity: .7; }
+.м-Б .контакты__карта .чип { background: rgba(255,255,255,.1); border-color: rgba(255,255,255,.4); color: var(--на-тьме); }
+.м-В .контакты__карта .связь__метка { color: var(--на-акценте); opacity: .8; }
+.м-В .контакты__карта .чип { background: rgba(255,255,255,.2); border-color: var(--на-акценте); color: var(--на-акценте); }
+.цены { background: var(--фон); }
+.цены__список { list-style: none; margin-top: 40px; max-width: 880px; border-top: 1px solid var(--линия); }
+.цены__список li { display: flex; justify-content: space-between; gap: 24px; align-items: baseline; padding: 20px 0; border-bottom: 1px solid var(--линия); font-size: clamp(17px, 1.5vw, 21px); }
+.цены__список b { font-family: var(--шрифт-заг); font-weight: 600; white-space: nowrap; color: var(--акцент); }
+.темы { background: var(--плита); }
+.темы__список { list-style: none; margin-top: 40px; display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 14px; }
+.темы__список li { background: var(--фон); border: 1px solid var(--линия); border-radius: 18px; padding: 22px 22px 20px; display: flex; flex-direction: column; gap: 8px; }
+.темы__список b { font-family: var(--шрифт-заг); font-size: clamp(19px, 1.6vw, 24px); font-weight: 600; }
+.темы__список span { color: var(--текст-2); font-size: 15px; }
+.м-В .связь__метка { color: rgba(255,255,255,.8); }
+.м-В .чип { background: rgba(255,255,255,.14); border-color: rgba(255,255,255,.5); color: #fff; }
+.м-В .открыто { color: rgba(255,255,255,.85); }
+.м-Б .связь, .м-Б .открыто { justify-content: center; }
 .услуги { background: var(--плита); }
+.без-фото-полосы { padding-bottom: 0; }
 .услуги ul { list-style: none; margin-top: 48px; display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 14px; }
 .услуги li { background: var(--фон); border: 1px solid var(--линия); border-radius: 18px; padding: 26px 24px; font-family: var(--шрифт-заг); font-size: clamp(18px, 1.5vw, 22px); font-weight: 500; line-height: 1.25; min-height: 128px; padding-top: 46px; display: flex; align-items: flex-end; position: relative; }
 .услуги li::before { content: attr(data-n); position: absolute; top: 18px; left: 24px; font-family: var(--шрифт); font-size: 13px; color: var(--акцент); font-weight: 600; letter-spacing: .06em; }
@@ -165,8 +202,8 @@ h1, h2, .лого { overflow-wrap: anywhere; }
 }
 </style>
 </head>
-<body class="м-Б ш-широкий">
-<div class="пример"><b>Пример страницы для «СтирМаш».</b> Данные из открытых карточек, тексты примерные - доработаем под вас.</div>
+<body class="м-А ш-обычный">
+<div class="пример"><b>Прототип сайта для «СтирМаш».</b> Данные из открытых карточек, тексты и фото примерные: доработаем под вас.</div>
 
 <header class="шапка полоса">
   <span class="лого">СтирМаш</span>
@@ -181,12 +218,16 @@ h1, h2, .лого { overflow-wrap: anywhere; }
       <a class="кнопка" href="tel:+79827384070">Позвонить</a>
       <a class="кнопка кнопка--контур" href="#как">Как это проходит</a>
     </div>
+    <div class="связь"><span class="связь__метка">Написать:</span><a class="чип" href="https://t.me/maik_taisan1999" target="_blank" rel="noopener">Telegram</a><a class="чип" href="https://wa.me/79827384070" target="_blank" rel="noopener">WhatsApp</a></div>
+    <div class="открыто" id="открыто" hidden data-часы='{"sun":[["00:00","00:00"]],"mon":[["00:00","00:00"]],"tue":[["00:00","00:00"]],"wed":[["00:00","00:00"]],"thu":[["00:00","00:00"]],"fri":[["00:00","00:00"]],"sat":[["00:00","00:00"]]}'></div>
     <div class="герой__рейтинг"><strong>4,9</strong><span>оценка клиентов на картах, 30 отзывов</span></div>
   </div>
-  <div class="герой__фото"><img src="foto/rabota-nad-platoy.webp" alt=""></div>
+  <div class="герой__фото"><img src="foto/payalnik.webp" alt=""></div>
 </section>
 
 <section class="услуги"><div class="блок полоса"><span class="метка">Что чинят</span><h2>С чем сюда обращаются</h2><ul><li data-n="01">Ремонт бытовой техники</li></ul></div></section>
+
+
 
 <section class="блок полоса" id="как">
   <span class="метка">Как это проходит</span>
@@ -208,6 +249,8 @@ h1, h2, .лого { overflow-wrap: anywhere; }
   <p class="подпись-полосы">Фото с карточки «СтирМаш» на картах</p>
 </section>
 
+<section class="темы"><div class="блок полоса"><span class="метка">Что отмечают клиенты</span><h2>За что хвалят в отзывах</h2><ul class="темы__список"><li><b>быстро и вовремя</b><span>в 18 из 27 отзывов</span></li><li><b>удобно</b><span>в 13 из 27 отзывов</span></li><li><b>качество работы</b><span>в 10 из 27 отзывов</span></li><li><b>вежливое общение</b><span>в 6 из 27 отзывов</span></li></ul><p class="подпись-полосы">Подсчёт по отзывам с карточки на картах.</p></div></section>
+
 <section class="отзывы"><div class="блок полоса"><span class="метка">Отзывы клиентов</span><h2>Что пишут те, кто уже обращался</h2><div class="отзывы__сетка"><blockquote class="отзыв"><span class="звёзды">★★★★★</span><p>«Спасибо за оперативность и качество работы. Отремонтировали нашу стиральную машину. Вещь, сами понимаете, весьма нужная, причем часто нужная. 
 Ещё раз спасибо!»</p><small>январь 2025 г., Яндекс Карты</small></blockquote><blockquote class="отзыв"><span class="звёзды">★★★★★</span><p>«Замечательный мастер! Починил холодильник быстро и без лишних разговоров. Цена полностью оправдана качеством работы.»</p><small>декабрь 2025 г., Яндекс Карты</small></blockquote><blockquote class="отзыв"><span class="звёзды">★★★★★</span><p>«Вызвали мастера на ремонт посудомоечной машины, приехал оперативно и устранил поломку  на месте , дал рекомендации по использованию и гарантию 1 год.»</p><small>август 2025 г., Яндекс Карты</small></blockquote><blockquote class="отзыв"><span class="звёзды">★★★★★</span><p>«Сломалась стиральная машинка. Вызвали мастера, он прибыл быстро не смотря на позднее время. Поченил апперативно. Мы остались довольны.»</p><small>август 2025 г., Яндекс Карты</small></blockquote></div></div></section>
 
@@ -226,10 +269,20 @@ h1, h2, .лого { overflow-wrap: anywhere; }
       <h3>Опишите поломку</h3>
       <p>Позвоните и расскажите, что с вещью. Ответ ни к чему не обязывает.</p>
       <a class="кнопка" href="tel:+79827384070">Позвонить</a>
+      <a class="кнопка кнопка--контур кнопка--мини" href="https://yandex.ru/maps/?pt=60.561005,56.836638&z=17&l=map" target="_blank" rel="noopener">Как добраться</a>
+      <div class="связь"><span class="связь__метка">Написать:</span><a class="чип" href="https://t.me/maik_taisan1999" target="_blank" rel="noopener">Telegram</a><a class="чип" href="https://wa.me/79827384070" target="_blank" rel="noopener">WhatsApp</a></div>
     </div>
   </div>
 </section>
 
-<footer class="подвал"><div class="полоса"><span>СтирМаш, Екатеринбург</span><span>Пример страницы. Не является публичной офертой.</span></div></footer>
+<footer class="подвал"><div class="полоса"><span>СтирМаш, Екатеринбург</span><span>Прототип сайта. Не является публичной офертой.</span></div></footer>
+<script>(function(){var e=document.getElementById('открыто');if(!e)return;var h=JSON.parse(e.getAttribute('data-часы'));var D=['sun','mon','tue','wed','thu','fri','sat'];
+var p=new Intl.DateTimeFormat('en-GB',{timeZone:'Asia/Yekaterinburg',weekday:'short',hour:'2-digit',minute:'2-digit',hour12:false}).formatToParts(new Date());var o={};p.forEach(function(x){o[x.type]=x.value});
+var di={sun:0,mon:1,tue:2,wed:3,thu:4,fri:5,sat:6}[String(o.weekday).slice(0,3).toLowerCase()];var now=parseInt(o.hour,10)%24*60+parseInt(o.minute,10);
+function m(s){var a=s.split(':');return a[0]*60+(+a[1])}
+var t=h[D[di]]||[];
+for(var i=0;i<t.length;i++){var a=m(t[i][0]),b=m(t[i][1]);if(b<=a)b+=1440;if(now>=a&&now<b){e.textContent=(a===0&&b>=1439)?'Сейчас открыто, круглосуточно':'Сейчас открыто, до '+t[i][1];e.className='открыто открыто--да';e.hidden=false;return}}
+for(var k=0;k<8;k++){var r=h[D[(di+k)%7]]||[];for(var j=0;j<r.length;j++){if(k>0||m(r[j][0])>now){e.textContent='Сейчас закрыто, откроется '+(k===0?'сегодня':k===1?'завтра':'позже')+' в '+r[j][0];e.hidden=false;return}}}
+})();</script>
 </body>
 </html>
